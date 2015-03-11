@@ -1,3 +1,7 @@
 gallery_app_homepage:
     path:     /hello/{name}
     defaults: { _controller: GalleryAppBundle:Default:index }
+
+gallery_app_index:
+    path:     /
+    defaults: { _controller: GalleryAppBundle:Default:index, name: 'name' }

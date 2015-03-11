@@ -1,4 +1,4 @@
 services:
-#    gallery_app.example:
-#        class: Gallery\AppBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    gallery_app.user_provider:
+        class: Gallery\AppBundle\Service\UserProvider
+        parent: hwi_oauth.user.provider.fosub_bridge
