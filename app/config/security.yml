@@ -24,7 +24,7 @@ security:
 #                        google:             "/login/check-google"
 #                        my_custom_provider: "/login/check-custom"
 #                        my_github:          "/login/check-github"
-                login_path:        /connect/vkontakte
+                login_path:        /connect
                 use_forward:       true
                 failure_path:      /connect
                 provider: fos_userbundle

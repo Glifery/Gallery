@@ -17,6 +17,6 @@ class DefaultController extends Controller
     public function testAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
-        return new Response('responce!');
+        return new Response('responce! '.(new \DateTime())->format('H:i:s d.m.Y'));
     }
 }

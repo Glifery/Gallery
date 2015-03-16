@@ -11,6 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+    const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+    const ROLE_USER = 'ROLE_USER';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -68,5 +72,19 @@ class User extends BaseUser
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    public function __toString()
+    {
+        return sprintf('%s (%s)', $this->username, $this->email);
+    }
+
+    public function getRolesList()
+    {
+        return array(
+            self::ROLE_SUPER_ADMIN => self::ROLE_SUPER_ADMIN,
+            self::ROLE_ADMIN => self::ROLE_ADMIN,
+            self::ROLE_USER => self::ROLE_USER,
+        );
     }
 }
