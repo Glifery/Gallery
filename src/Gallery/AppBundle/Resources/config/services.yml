@@ -1,4 +1,16 @@
 services:
-    gallery_app.user_provider:
+    gallery_app.service.user_provider:
         class: Gallery\AppBundle\Service\UserProvider
         parent: hwi_oauth.user.provider.fosub_bridge
+
+    gallery_app.admin.user_admin:
+        class: Gallery\AppBundle\Admin\UserAdmin
+        arguments:
+            - ~
+            - Gallery\AppBundle\Entity\User
+            - ~
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: Настройки
+              label: Пользователи

@@ -88,7 +88,7 @@ hwi_oauth:
     firewall_name: secured_area
     connect:
         confirmation: true
-#        account_connector: gallery_app.user_provider
+#        account_connector: gallery_app.service.user_provider
     resource_owners:
         vkontakte:
             type:                vkontakte
@@ -99,7 +99,7 @@ hwi_oauth:
 #                display: popup
     fosub:
         # try 30 times to check if a username is available (foo, foo1, foo2 etc)
-        username_iterations: 30
+        username_iterations: 1
 
         # mapping between resource owners (see below) and properties
         properties:

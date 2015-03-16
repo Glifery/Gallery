@@ -5,3 +5,7 @@ gallery_app_homepage:
 gallery_app_index:
     path:     /
     defaults: { _controller: GalleryAppBundle:Default:index, name: 'name' }
+
+gallery_app_test:
+    path:     /test
+    defaults: { _controller: GalleryAppBundle:Default:test }

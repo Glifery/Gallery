@@ -30,12 +30,13 @@ security:
                 provider: fos_userbundle
                 oauth_user_provider:
 #                    service: hwi_oauth.user.provider.fosub_bridge
-                    service: gallery_app.user_provider
+                    service: gallery_app.service.user_provider
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/hello/, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/hello/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/admin/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/test, role: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/, role: ROLE_USER }

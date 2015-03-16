@@ -24,6 +24,11 @@ class User extends BaseUser
     private $vkontakteId;
 
     /**
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
      * @return mixed
      */
     public function getVkontakteId()
@@ -47,5 +52,21 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 }
