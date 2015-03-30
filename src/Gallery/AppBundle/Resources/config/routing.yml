@@ -9,3 +9,7 @@ gallery_app_index:
 gallery_app_test:
     path:     /test
     defaults: { _controller: GalleryAppBundle:Default:test }
+
+gallery_app.gallery.index:
+    path:     /gallery
+    defaults: { _controller: GalleryAppBundle:Gallery:index }

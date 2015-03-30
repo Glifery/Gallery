@@ -1,0 +1,14 @@
+{% extends 'MopaBootstrapBundle::base.html.twig' %}
+
+{% block head_style %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/galleryapp/js/photoswipe/photoswipe.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/galleryapp/js/photoswipe/default-skin/default-skin.css') }}"/>
+{% endblock head_style %}
+
+{% block foot_script %}
+    <script src="{{ asset('bundles/galleryapp/js/photoswipe/photoswipe.min.js') }}"></script>
+    <script src="{{ asset('bundles/galleryapp/js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
+{% endblock foot_script %}
+
+{% block title %}GALLERY{% endblock title %}

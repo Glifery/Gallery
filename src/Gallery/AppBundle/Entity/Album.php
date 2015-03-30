@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="photo")
+ * @ORM\Table(name="album")
  */
-class Category
+class Album
 {
     /**
      * @ORM\Id
@@ -18,20 +18,20 @@ class Category
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Album", inversedBy="children", cascade={"persist"})
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $parent;
 
     /**
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent_id", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Album", mappedBy="parent_id", cascade={"persist"}, orphanRemoval=true)
      */
     private $children;
 
     /**
      * @ORM\Column(name="original_path", type="string", nullable=false)
      */
-    private $originPath;
+    private $originalPath;
 
     /**
      * @ORM\Column(type="string", nullable=false)
@@ -49,12 +49,12 @@ class Category
     private $datetime;
 
     /**
-     * @ORM\Column(type="boolean", nullable=false, options={"default": true})
+     * @ORM\Column(type="boolean", nullable=false, options={"default": false})
      */
     private $published;
 
     /**
-     * @ORM\OneToMany(targetEntity="Photo", mappedBy="category_id", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Photo", mappedBy="album", cascade={"persist"}, orphanRemoval=true)
      */
     private $photos;
     /**
@@ -64,6 +64,7 @@ class Category
     {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
         $this->photos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->published = false;
     }
 
     /**
@@ -80,11 +81,11 @@ class Category
      * Set originPath
      *
      * @param string $originPath
-     * @return Category
+     * @return Album
      */
-    public function setOriginPath($originPath)
+    public function setOriginalPath($originPath)
     {
-        $this->originPath = $originPath;
+        $this->originalPath = $originPath;
 
         return $this;
     }
@@ -94,16 +95,16 @@ class Category
      *
      * @return string 
      */
-    public function getOriginPath()
+    public function getOriginalPath()
     {
-        return $this->originPath;
+        return $this->originalPath;
     }
 
     /**
      * Set title
      *
      * @param string $title
-     * @return Category
+     * @return Album
      */
     public function setTitle($title)
     {
@@ -126,7 +127,7 @@ class Category
      * Set description
      *
      * @param string $description
-     * @return Category
+     * @return Album
      */
     public function setDescription($description)
     {
@@ -149,7 +150,7 @@ class Category
      * Set datetime
      *
      * @param \DateTime $datetime
-     * @return Category
+     * @return Album
      */
     public function setDatetime($datetime)
     {
@@ -172,7 +173,7 @@ class Category
      * Set published
      *
      * @param boolean $published
-     * @return Category
+     * @return Album
      */
     public function setPublished($published)
     {
@@ -194,10 +195,10 @@ class Category
     /**
      * Set parent
      *
-     * @param \Gallery\AppBundle\Entity\Category $parent
-     * @return Category
+     * @param \Gallery\AppBundle\Entity\Album $parent
+     * @return Album
      */
-    public function setParent(\Gallery\AppBundle\Entity\Category $parent = null)
+    public function setParent(\Gallery\AppBundle\Entity\Album $parent = null)
     {
         $this->parent = $parent;
 
@@ -207,7 +208,7 @@ class Category
     /**
      * Get parent
      *
-     * @return \Gallery\AppBundle\Entity\Category 
+     * @return \Gallery\AppBundle\Entity\Album
      */
     public function getParent()
     {
@@ -217,10 +218,10 @@ class Category
     /**
      * Add children
      *
-     * @param \Gallery\AppBundle\Entity\Category $children
-     * @return Category
+     * @param \Gallery\AppBundle\Entity\Album $children
+     * @return Album
      */
-    public function addChild(\Gallery\AppBundle\Entity\Category $children)
+    public function addChild(\Gallery\AppBundle\Entity\Album $children)
     {
         $this->children[] = $children;
 
@@ -230,9 +231,9 @@ class Category
     /**
      * Remove children
      *
-     * @param \Gallery\AppBundle\Entity\Category $children
+     * @param \Gallery\AppBundle\Entity\Album $children
      */
-    public function removeChild(\Gallery\AppBundle\Entity\Category $children)
+    public function removeChild(\Gallery\AppBundle\Entity\Album $children)
     {
         $this->children->removeElement($children);
     }
@@ -251,7 +252,7 @@ class Category
      * Add photos
      *
      * @param \Gallery\AppBundle\Entity\Photo $photos
-     * @return Category
+     * @return Album
      */
     public function addPhoto(\Gallery\AppBundle\Entity\Photo $photos)
     {
@@ -278,5 +279,13 @@ class Category
     public function getPhotos()
     {
         return $this->photos;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->title;
     }
 }

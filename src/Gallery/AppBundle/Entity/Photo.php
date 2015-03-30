@@ -18,10 +18,10 @@ class Photo
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="photos", cascade={"persist"})
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Album", inversedBy="photos", cascade={"persist"})
+     * @ORM\JoinColumn(name="album_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $category;
+    private $album;
 
     /**
      * @ORM\Column(name="original_path", type="string", nullable=false)
@@ -29,7 +29,7 @@ class Photo
     private $originalPath;
 
     /**
-     * @ORM\Column(name="upload_path", type="string", nullable=false)
+     * @ORM\Column(name="upload_path", type="string", nullable=true)
      */
     private $uploadPath;
 
@@ -47,6 +47,11 @@ class Photo
      * @ORM\Column(type="string", nullable=true)
      */
     private $exif;
+
+    public function __construct()
+    {
+        $this->published = true;
+    }
 
     /**
      * Get id
@@ -174,14 +179,14 @@ class Photo
     }
 
     /**
-     * Set category
+     * Set album
      *
-     * @param \Gallery\AppBundle\Entity\Category $category
+     * @param \Gallery\AppBundle\Entity\Album $album
      * @return Photo
      */
-    public function setCategory(\Gallery\AppBundle\Entity\Category $category = null)
+    public function setAlbum(\Gallery\AppBundle\Entity\Album $album = null)
     {
-        $this->category = $category;
+        $this->album = $album;
 
         return $this;
     }
@@ -189,10 +194,18 @@ class Photo
     /**
      * Get category
      *
-     * @return \Gallery\AppBundle\Entity\Category 
+     * @return \Gallery\AppBundle\Entity\Album
      */
-    public function getCategory()
+    public function getAlbum()
     {
-        return $this->category;
+        return $this->album;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->originalPath;
     }
 }

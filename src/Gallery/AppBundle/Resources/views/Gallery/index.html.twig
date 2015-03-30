@@ -1,0 +1,12 @@
+{% extends 'GalleryAppBundle:Gallery:layout.html.twig' %}
+
+{% block content %}
+    <div>
+        {% for album in albums %}
+            <h1>{{ album.title }}</h1>
+            {% for photo in album.photos %}
+                <img src="/{{ photo.uploadPath }}" alt=""/>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock content %}
