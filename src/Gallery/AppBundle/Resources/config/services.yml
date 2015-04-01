@@ -3,38 +3,7 @@ services:
         class: Gallery\AppBundle\Service\UserProvider
         parent: hwi_oauth.user.provider.fosub_bridge
 
-    gallery_app.admin.user_admin:
-        class: Gallery\AppBundle\Admin\UserAdmin
+    gallery_app.service.album_permission_resolver:
+        class: Gallery\AppBundle\Service\AlbumPermissionResolver
         arguments:
-            - ~
-            - Gallery\AppBundle\Entity\User
-            - ~
-        tags:
-            - name: sonata.admin
-              manager_type: orm
-              group: Настройки
-              label: Пользователи
-
-    gallery_app.admin.album_admin:
-        class: Gallery\AppBundle\Admin\AlbumAdmin
-        arguments:
-            - ~
-            - Gallery\AppBundle\Entity\Album
-            - ~
-        tags:
-            - name: sonata.admin
-              manager_type: orm
-              group: Галерея
-              label: Альбом
-
-    gallery_app.admin.photo_admin:
-        class: Gallery\AppBundle\Admin\PhotoAdmin
-        arguments:
-            - ~
-            - Gallery\AppBundle\Entity\Photo
-            - ~
-        tags:
-            - name: sonata.admin
-              manager_type: orm
-              group: Галерея
-              label: Фото
+            - @doctrine.orm.entity_manager

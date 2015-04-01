@@ -13,3 +13,11 @@ gallery_app_test:
 gallery_app.gallery.index:
     path:     /gallery
     defaults: { _controller: GalleryAppBundle:Gallery:index }
+
+gallery_app.gallery.albums:
+    path:     /gallery/{parent}
+    defaults: { _controller: GalleryAppBundle:Gallery:albums }
+
+gallery_app.gallery.album:
+    path:     /gallery/{parent}/{child}
+    defaults: { _controller: GalleryAppBundle:Gallery:album }

@@ -5,7 +5,7 @@ namespace Gallery\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Gallery\AppBundle\Repository\AlbumRepository")
  * @ORM\Table(name="album")
  */
 class Album
