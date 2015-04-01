@@ -51,6 +51,12 @@ class PhotoAdmin extends Admin
             ->add('published')
             ->add('album.title')
             ->add('originalPath')
+            ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array(),
+                    )
+                ))
         ;
     }
 

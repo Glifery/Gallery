@@ -120,3 +120,19 @@ sonata_admin:
 
 sonata_doctrine_orm_admin:
     entity_manager: ~
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        gallery_preview:
+            quality: 75
+            filters:
+                thumbnail: { size: [100, 100], mode: outbound }
+        gallery_full:
+            quality: 75
+            filters:
+                thumbnail: { size: [600, 400], mode: outbound }

@@ -54,6 +54,12 @@ class AlbumAdmin extends Admin
             ->add('parent')
             ->add('title')
             ->add('originalPath')
+            ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array(),
+                    )
+                ))
         ;
     }
 
