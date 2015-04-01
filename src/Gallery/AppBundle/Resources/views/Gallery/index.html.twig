@@ -1,24 +1,24 @@
 {% extends 'GalleryAppBundle:Gallery:layout.html.twig' %}
 
 {% block content_content %}
-    <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
 
-        {% for album in albums %}
+    {% for album in albums %}
+        <h1>{{ album.title }}</h1>
+        <div class="js-gallery" itemscope itemtype="http://schema.org/ImageGallery">
             {% for photo in album.photos %}
                 <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                    <a href="{{ photo.uploadPath }}" itemprop="contentUrl" data-size="600x400">
+                    <a href="{{ photo.uploadPath|imagine_filter('gallery_full') }}" itemprop="contentUrl" data-size="600x400">
                         <img src="{{ photo.uploadPath|imagine_filter('gallery_preview') }}" itemprop="thumbnail" alt="Image description" />
                     </a>
                     <figcaption itemprop="caption description">Image caption</figcaption>
                 </figure>
             {% endfor %}
-        {% endfor %}
-
-    </div>
+        </div>
+    {% endfor %}
 
     <script>
         $(function() {
-            initPhotoSwipe('.my-gallery')
+            initPhotoSwipe('.js-gallery')
         });
     </script>
 {% endblock content_content %}

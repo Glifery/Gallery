@@ -131,8 +131,12 @@ liip_imagine:
         gallery_preview:
             quality: 75
             filters:
-                thumbnail: { size: [100, 100], mode: outbound }
+                thumbnail: { size: [100, 100], mode: inset }
         gallery_full:
             quality: 75
             filters:
-                thumbnail: { size: [600, 400], mode: outbound }
+                thumbnail: { size: [600, 400], mode: inset }
+#                watermark:
+#                    image: /Resources/watermark/demo.jpg
+#                    size: 0.25
+#                    position: bottomright
